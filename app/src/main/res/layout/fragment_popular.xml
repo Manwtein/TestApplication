@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorWhite"
+    tools:context=".UI.popular.PopularFragment">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/recycleView_Popular"
+            app:layout_constraintBottom_toBottomOf="parent">
+        </android.support.v7.widget.RecyclerView>
+
+        <include
+            android:id="@+id/pop_no_connect"
+            layout="@layout/container_no_connect"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/pb_pop"
+            layout="@layout/custom_progress_bar"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:indeterminate="true"
+            android:indeterminateDrawable="@drawable/animvectordrawable"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+</FrameLayout>

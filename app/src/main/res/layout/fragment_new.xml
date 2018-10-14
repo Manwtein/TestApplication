@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".UI.news.NewFragment">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srl_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycleView_new"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+        </android.support.v7.widget.RecyclerView>
+
+        <include
+            android:id="@+id/new_no_connect"
+            layout="@layout/container_no_connect"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/pb_new"
+            layout="@layout/custom_progress_bar"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:indeterminate="true"
+            android:indeterminateDrawable="@drawable/animvectordrawable"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</FrameLayout>

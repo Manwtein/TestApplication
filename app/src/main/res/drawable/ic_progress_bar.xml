@@ -1,0 +1,10 @@
+<vector android:height="144dp" android:viewportHeight="100"
+    android:viewportWidth="100" android:width="144dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:name="shape_one">
+        <path android:name="circle_one" android:fillColor="#31196D" android:pathData="M25,50m-5.037,0a5.037,5.037 0,1 1,10.074 0a5.037,5.037 0,1 1,-10.074 0"/>
+
+        <path android:name="circle_two" android:fillColor="#ed5992" android:pathData="M50,50m-5.845,0a5.845,5.845 0,1 1,11.69 0a5.845,5.845 0,1 1,-11.69 0"/>
+
+        <path android:name="circle_three" android:fillColor="#733ce2" android:pathData="M75,50m-3.662,0a3.662,3.662 0,1 1,7.325 0a3.662,3.662 0,1 1,-7.325 0"/>
+    </group>
+</vector>

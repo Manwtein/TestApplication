@@ -1,0 +1,12 @@
+<animated-vector android:drawable="@drawable/ic_progress_bar"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <target
+        android:animation="@animator/anim_circle_one"
+        android:name="circle_one" />
+    <target
+        android:animation="@animator/anim_circle_two"
+        android:name="circle_two" />
+    <target
+        android:animation="@animator/anim_circle_three"
+        android:name="circle_three" />
+</animated-vector>
