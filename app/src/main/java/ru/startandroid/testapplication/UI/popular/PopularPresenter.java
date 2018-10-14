@@ -5,12 +5,7 @@ import android.util.Log;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
-import com.google.gson.JsonObject;
-
-import org.json.JSONObject;
-
 import java.util.List;
-
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableSingleObserver;
 import ru.startandroid.testapplication.model.Project;
@@ -30,7 +25,7 @@ public class PopularPresenter
         }
     }
 
-    private void request() {
+    public void request() {
         ServiceGenerator
                 .getInstance()
                 .getApiService()

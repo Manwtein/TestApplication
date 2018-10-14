@@ -52,14 +52,15 @@ public class NewFragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_new, container, false);
+        View view = inflater
+                .inflate(R.layout.fragment_new, container, false);
         init(view);
         return view;
     }
 
     private void init(View view) {
         initToolbar();
-        swipeRefreshLayout = view.findViewById(R.id.srl_container);
+        swipeRefreshLayout = view.findViewById(R.id.srl_new);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -91,8 +92,10 @@ public class NewFragment
         Toolbar toolbar = getActivity().findViewById(R.id.toolbar);
         toolbar.setTitle("New");
         ((MvpAppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-        ((MvpAppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        ((MvpAppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
+        ((MvpAppCompatActivity)getActivity()).getSupportActionBar()
+                .setDisplayHomeAsUpEnabled(false);
+        ((MvpAppCompatActivity)getActivity()).getSupportActionBar()
+                .setDisplayShowHomeEnabled(false);
     }
 
     @Override
@@ -115,7 +118,10 @@ public class NewFragment
         Fragment fragment = new DetailFragment();
         fragment.setArguments(bundle);
         if (getFragmentManager() != null) {
-            getFragmentManager().beginTransaction().replace(R.id.fl_container, fragment).addToBackStack(null).commit();
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fl_container, fragment)
+                    .addToBackStack(null).commit();
         }
     }
 

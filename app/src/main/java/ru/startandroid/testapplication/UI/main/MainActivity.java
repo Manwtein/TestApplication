@@ -24,7 +24,6 @@ public class MainActivity
     private static final int POS_NEW_FRAGMENT = 1;
     private static final int POS_POP_FRAGMENT = 2;
 
-    private Toolbar toolbar;
 
     @InjectPresenter
             MainPresenter mainPresenter;
@@ -33,14 +32,17 @@ public class MainActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         init();
     }
 
     private void init() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         BottomNavigationView navigationView = findViewById(R.id.navigation_view);
-        navigationView.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
+        navigationView
+                .setOnNavigationItemReselectedListener(
+                        new BottomNavigationView
+                                .OnNavigationItemReselectedListener() {
             @Override
             public void onNavigationItemReselected(@NonNull MenuItem menuItem) {
 
