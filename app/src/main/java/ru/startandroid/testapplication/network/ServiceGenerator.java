@@ -33,8 +33,10 @@ public class ServiceGenerator {
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(new Interceptor() {
                     @Override
-                    public okhttp3.Response intercept(Chain chain) throws IOException {
-                        Request request = chain.request().newBuilder()
+                    public okhttp3.Response intercept(Chain chain)
+                            throws IOException {
+                        Request request = chain.request()
+                                .newBuilder()
                                 .header(KEY_TAG, KEY_VALUE)
                                 .build();
 
@@ -45,7 +47,8 @@ public class ServiceGenerator {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(base_url)
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.
+                        createWithScheduler(Schedulers.io()))
                 .client(client)
                 .build();
 

@@ -40,7 +40,6 @@ public class PopularFragment
     private LinearLayout pop_no_connect;
     private ProgressBar progressBar;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private GridLayoutManager gridLayoutManager;
 
     @InjectPresenter
     PopularPresenter popularPresenter;
@@ -56,6 +55,32 @@ public class PopularFragment
 
     private void init(View view) {
         initToolbar();
+        initSwipe(view);
+        progressBar = view.findViewById(R.id.pb_pop);
+        pop_no_connect = view.findViewById(R.id.pop_no_connect);
+        initRecycler(view);
+    }
+
+    private void initRecycler(View view) {
+        recyclerView = view.findViewById(R.id.recycleView_Popular);
+        GridLayoutManager gridLayoutManager;
+        if (getResources().getConfiguration().orientation
+                == Configuration.ORIENTATION_LANDSCAPE) {
+            gridLayoutManager = new GridLayoutManager(getActivity(),3);
+        } else {
+            gridLayoutManager = new GridLayoutManager(getActivity(),2);
+        }
+        recyclerView.setLayoutManager(gridLayoutManager);
+        recyclerAdapter = new RecyclerAdapter(new OnPopularClickListener() {
+            @Override
+            public void onPopularClick(Bundle bundle) {
+                popularPresenter.onPopularClick(bundle);
+            }
+        });
+        recyclerView.setAdapter(recyclerAdapter);
+    }
+
+    private void initSwipe(View view) {
         swipeRefreshLayout = view.findViewById(R.id.srl_popular);
         swipeRefreshLayout.setColorSchemeResources(R.color.colorTitle);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -67,22 +92,6 @@ public class PopularFragment
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
-        progressBar = view.findViewById(R.id.pb_pop);
-        pop_no_connect = view.findViewById(R.id.pop_no_connect);
-        recyclerView = view.findViewById(R.id.recycleView_Popular);
-        if (getResources().getConfiguration().orientation
-                == Configuration.ORIENTATION_LANDSCAPE)
-            gridLayoutManager = new GridLayoutManager(getActivity(),3);
-        else
-            gridLayoutManager = new GridLayoutManager(getActivity(),2);
-        recyclerView.setLayoutManager(gridLayoutManager);
-        recyclerAdapter = new RecyclerAdapter(new OnPopularClickListener() {
-            @Override
-            public void onPopularClick(Bundle bundle) {
-                popularPresenter.onPopularClick(bundle);
-            }
-        });
-        recyclerView.setAdapter(recyclerAdapter);
     }
 
     private void initToolbar() {
