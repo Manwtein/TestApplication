@@ -15,13 +15,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ru.startandroid.testapplication.R;
-import ru.startandroid.testapplication.model.Project;
+import ru.startandroid.testapplication.model.Photo;
 
 public class RecyclerAdapter
         extends RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder>{
     private final String BASE_URL = "http://gallery.dev.webant.ru/media/";
 
-    private List<Project> projects = new ArrayList<>();
+    private List<Photo> photos = new ArrayList<>();
     private Context context;
 
     public interface OnPopularClickListener {
@@ -30,9 +30,9 @@ public class RecyclerAdapter
 
     private final OnPopularClickListener listener;
 
-    public void setListProjects(List<Project> projects,
+    public void setListProjects(List<Photo> photos,
                                 Context context){
-        this.projects = projects;
+        this.photos = photos;
         this.context = context;
     }
 
@@ -53,14 +53,14 @@ public class RecyclerAdapter
     public void onBindViewHolder(@NonNull RecyclerViewHolder viewHolder,
                                  int i) {
         Picasso.with(context)
-                .load(BASE_URL + projects.get(i).getImage().getContentUrl())
+                .load(BASE_URL + photos.get(i).getImage().getContentUrl())
                 .into(viewHolder.imageView);
     }
 
     @Override
     public int getItemCount() {
-        if (projects != null)
-        return projects.size();
+        if (photos != null)
+        return photos.size();
         else return 0;
     }
 
@@ -78,11 +78,11 @@ public class RecyclerAdapter
         public void onClick(View v) {
             Bundle bundle = new Bundle();
             bundle.putString("name",
-                    projects.get(getAdapterPosition()).getName());
+                    photos.get(getAdapterPosition()).getName());
             bundle.putString("description",
-                    projects.get(getAdapterPosition()).getDescription());
+                    photos.get(getAdapterPosition()).getDescription());
             bundle.putString("contentUrl",
-                    BASE_URL + projects.get(getAdapterPosition()).getImage().getContentUrl());
+                    BASE_URL + photos.get(getAdapterPosition()).getImage().getContentUrl());
             listener.onPopularClick(bundle);
         }
     }

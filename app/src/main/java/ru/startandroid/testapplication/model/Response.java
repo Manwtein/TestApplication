@@ -5,13 +5,13 @@ import java.util.List;
 
 public class Response {
 
-    private List<Project> data = null;
+    private List<Photo> data = null;
 
-    public List<Project> getProjects(){
+    public List<Photo> getProjects(){
         return data;
     }
 
-    public void setProjects(List<Project> data){
+    public void setProjects(List<Photo> data){
         this.data = data;
     }
 }

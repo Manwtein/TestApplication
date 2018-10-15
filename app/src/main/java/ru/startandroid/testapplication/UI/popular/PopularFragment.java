@@ -26,7 +26,7 @@ import ru.startandroid.testapplication.R;
 import ru.startandroid.testapplication.UI.detail.DetailFragment;
 import ru.startandroid.testapplication.adapter.RecyclerAdapter.OnPopularClickListener;
 import ru.startandroid.testapplication.adapter.RecyclerAdapter;
-import ru.startandroid.testapplication.model.Project;
+import ru.startandroid.testapplication.model.Photo;
 
 public class PopularFragment
         extends MvpAppCompatFragment
@@ -107,10 +107,10 @@ public class PopularFragment
     }
 
     @Override
-    public void setListProjects(List<Project> projects) {
+    public void setListProjects(List<Photo> photos) {
         hideProgressBar();
         recyclerView.setVisibility(View.VISIBLE);
-        recyclerAdapter.setListProjects(projects, getContext());
+        recyclerAdapter.setListProjects(photos, getContext());
         recyclerAdapter.notifyDataSetChanged();
     }
 

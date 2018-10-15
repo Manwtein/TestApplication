@@ -10,14 +10,14 @@ import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableSingleObserver;
-import ru.startandroid.testapplication.model.Project;
+import ru.startandroid.testapplication.model.Photo;
 import ru.startandroid.testapplication.model.Response;
 import ru.startandroid.testapplication.network.ServiceGenerator;
 
 @InjectViewState
 public class NewPresenter
         extends MvpPresenter<NewView> {
-    private List<Project> projects;
+    private List<Photo> photos;
 
     @Override
     protected void onFirstViewAttach() {
@@ -35,8 +35,8 @@ public class NewPresenter
                     @Override
                     public void onSuccess(Response response) {
                         Log.i("myLogs", "response");
-                        projects = response.getProjects();
-                        getViewState().setListProjects(projects);
+                        photos = response.getProjects();
+                        getViewState().setListProjects(photos);
                     }
 
                     @Override

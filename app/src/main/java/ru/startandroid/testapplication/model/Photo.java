@@ -1,7 +1,7 @@
 package ru.startandroid.testapplication.model;
 
 
-public class Project {
+public class Photo {
 
     private String name;
     private String description;
