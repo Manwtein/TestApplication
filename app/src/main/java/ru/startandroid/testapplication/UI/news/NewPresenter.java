@@ -35,7 +35,7 @@ public class NewPresenter
                     @Override
                     public void onSuccess(Response response) {
                         Log.i("myLogs", "response");
-                        photos = response.getProjects();
+                        photos = response.getPhotos();
                         getViewState().setListProjects(photos);
                     }
 

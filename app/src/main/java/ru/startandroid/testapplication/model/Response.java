@@ -7,11 +7,11 @@ public class Response {
 
     private List<Photo> data = null;
 
-    public List<Photo> getProjects(){
+    public List<Photo> getPhotos(){
         return data;
     }
 
-    public void setProjects(List<Photo> data){
+    public void setPhotos(List<Photo> data){
         this.data = data;
     }
 }
