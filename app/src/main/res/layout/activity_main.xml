@@ -11,7 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:theme="@style/Toolbar"
-            app:titleTextAppearance="@style/titleStyle"
+            app:titleTextAppearance="@style/TitleStyle"
             app:layout_constraintTop_toTopOf="parent"
             app:titleTextColor="@color/colorTitle">
         </android.support.v7.widget.Toolbar>
@@ -19,9 +19,15 @@
             android:id="@+id/fl_container"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@id/navigation_view"
+            app:layout_constraintBottom_toTopOf="@id/side"
             app:layout_constraintTop_toBottomOf="@id/toolbar">
          </FrameLayout>
+        <TextView
+            android:id="@+id/side"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:layout_constraintBottom_toTopOf="@id/navigation_view"
+            android:background="@color/colorSide"/>
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/navigation_view"
             android:layout_width="match_parent"

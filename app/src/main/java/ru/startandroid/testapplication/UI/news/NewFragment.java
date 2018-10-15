@@ -61,6 +61,7 @@ public class NewFragment
     private void init(View view) {
         initToolbar();
         swipeRefreshLayout = view.findViewById(R.id.srl_new);
+        swipeRefreshLayout.setColorSchemeResources(R.color.colorTitle);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

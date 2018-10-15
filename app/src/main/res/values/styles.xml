@@ -1,10 +1,10 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.Design.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorWhite</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
     </style>
 
     <style name="Toolbar" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -12,13 +12,14 @@
         <item name="android:background">@color/colorWhite</item>
     </style>
 
-    <style name="titleStyle">
+    <style name="TitleStyle">
         <item name="android:textSize">30sp</item>
         <item name="android:textStyle">bold</item>
     </style>
+
     <style name="TextAppearanceItem" parent="TextAppearance.AppCompat.Body1">
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">10sp</item>
-        <item name="android:letterSpacing">0.012</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">0.012</item>
     </style>
 </resources>

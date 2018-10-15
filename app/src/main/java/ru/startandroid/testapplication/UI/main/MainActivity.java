@@ -39,14 +39,10 @@ public class MainActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         BottomNavigationView navigationView = findViewById(R.id.navigation_view);
-        navigationView
-                .setOnNavigationItemReselectedListener(
-                        new BottomNavigationView
-                                .OnNavigationItemReselectedListener() {
+        navigationView.setOnNavigationItemReselectedListener(
+                new BottomNavigationView.OnNavigationItemReselectedListener() {
             @Override
-            public void onNavigationItemReselected(@NonNull MenuItem menuItem) {
-
-            }
+            public void onNavigationItemReselected(@NonNull MenuItem menuItem) {}
         });
         navigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {

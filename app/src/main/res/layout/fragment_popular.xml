@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorWhite"
     tools:context=".UI.popular.PopularFragment">
 
     <android.support.v4.widget.SwipeRefreshLayout
@@ -33,7 +32,7 @@
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:indeterminate="true"
-            android:indeterminateDrawable="@drawable/animvectordrawable"
+            android:indeterminateDrawable="@drawable/anim_vector_drawable"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

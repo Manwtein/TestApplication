@@ -8,4 +8,5 @@
     <color name="colorUnfocused">#8c8c8c</color>
     <color name="colorTitle">#FF2F1767</color>
     <color name="colorWhite">#ffffff</color>
+    <color name="colorSide">#e6d9d9d9</color>
 </resources>

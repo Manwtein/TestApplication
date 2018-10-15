@@ -65,7 +65,11 @@ public class DetailFragment
         Toolbar toolbar = getActivity().findViewById(R.id.toolbar);
         toolbar.setTitle("");
         ((MvpAppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-        ((MvpAppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ((MvpAppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+        ((MvpAppCompatActivity)getActivity())
+                .getSupportActionBar()
+                .setDisplayHomeAsUpEnabled(true);
+        ((MvpAppCompatActivity)getActivity())
+                .getSupportActionBar()
+                .setDisplayShowHomeEnabled(true);
     }
 }
