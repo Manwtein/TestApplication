@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,12 +7,10 @@
     android:background="@color/colorWhite"
     tools:context=".UI.detail.DetailFragment">
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
     <ImageView
         android:id="@+id/imageUrl"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_default="percent"
         android:layout_height="0dp"
         app:layout_constraintHeight_percent="0.6"
         android:scaleType="centerCrop"
@@ -21,25 +19,23 @@
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:text="name"
+        android:paddingStart="@dimen/normal_dimen"
+        android:paddingEnd="@dimen/normal_dimen"
         android:textColor="@color/colorTitle"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="@dimen/normal_size"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageUrl" />
 
     <TextView
         android:id="@+id/description"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:paddingTop="20dp"
-        android:text="desc"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingStart="@dimen/normal_dimen"
+        android:paddingEnd="@dimen/normal_dimen"
+        android:paddingTop="@dimen/normal_dimen"
+        android:textSize="@dimen/small_size"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name" />
-    </android.support.constraint.ConstraintLayout>
-</FrameLayout>
+</android.support.constraint.ConstraintLayout>

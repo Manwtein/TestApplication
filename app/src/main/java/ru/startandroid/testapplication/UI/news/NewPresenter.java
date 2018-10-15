@@ -21,11 +21,9 @@ public class NewPresenter
 
 
     @Override
-    public void attachView(NewView view) {
-        super.attachView(view);
-        if (projects == null) {
-            request();
-        }
+    protected void onFirstViewAttach() {
+        super.onFirstViewAttach();
+        request();
     }
 
     public void request() {

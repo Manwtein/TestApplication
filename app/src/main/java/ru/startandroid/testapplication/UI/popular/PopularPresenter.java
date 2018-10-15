@@ -18,11 +18,9 @@ public class PopularPresenter
     private List<Project> projects;
 
     @Override
-    public void attachView(PopularView view) {
-        super.attachView(view);
-        if (projects == null) {
-            request();
-        }
+    protected void onFirstViewAttach() {
+        super.onFirstViewAttach();
+        request();
     }
 
     public void request() {
