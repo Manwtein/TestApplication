@@ -3,9 +3,9 @@ package ru.startandroid.testapplication.model;
 
 public class Project {
 
-    String name;
-    String description;
-    Image image;
+    private String name;
+    private String description;
+    private Image image;
 
     public String getName() {
         return name;

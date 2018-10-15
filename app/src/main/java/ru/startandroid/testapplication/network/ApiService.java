@@ -9,5 +9,6 @@ import ru.startandroid.testapplication.model.Response;
 public interface ApiService {
 
     @GET("/api/photos")
-    Single<Response> getNews(@Query("new") boolean new_items, @Query("popular") boolean new_populars);
+    Single<Response> getPhotos(@Query("new") boolean new_items,
+                               @Query("popular") boolean new_populars);
 }

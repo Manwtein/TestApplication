@@ -2,7 +2,6 @@ package ru.startandroid.testapplication.UI.news;
 
 
 import android.content.res.Configuration;
-import android.graphics.drawable.Animatable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.annotation.Nullable;
@@ -15,20 +14,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.MvpAppCompatFragment;
-import com.arellomobile.mvp.MvpFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import java.util.List;
 
 import ru.startandroid.testapplication.R;
 import ru.startandroid.testapplication.UI.detail.DetailFragment;
-import ru.startandroid.testapplication.UI.main.MainActivity;
-import ru.startandroid.testapplication.adapter.RecycleAdapter;
+import ru.startandroid.testapplication.adapter.RecyclerAdapter;
 import ru.startandroid.testapplication.model.Project;
 
 
@@ -43,7 +39,7 @@ public class NewFragment
     NewPresenter newPresenter;
 
     private RecyclerView recyclerView;
-    private RecycleAdapter recycleAdapter;
+    private RecyclerAdapter recyclerAdapter;
     private LinearLayout new_no_connect;
     private ProgressBar progressBar;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -80,13 +76,13 @@ public class NewFragment
         else
             gridLayoutManager = new GridLayoutManager(getActivity(),2);
         recyclerView.setLayoutManager(gridLayoutManager);
-        recycleAdapter = new RecycleAdapter(new RecycleAdapter.OnPopularClickListener() {
+        recyclerAdapter = new RecyclerAdapter(new RecyclerAdapter.OnPopularClickListener() {
             @Override
             public void onPopularClick(Bundle bundle) {
                 newPresenter.onPopularClick(bundle);
             }
         });
-        recyclerView.setAdapter(recycleAdapter);
+        recyclerView.setAdapter(recyclerAdapter);
     }
 
     private void initToolbar() {
@@ -110,8 +106,8 @@ public class NewFragment
     public void setListProjects(List<Project> projects) {
         hideProgressBar();
         recyclerView.setVisibility(View.VISIBLE);
-        recycleAdapter.setListProjects(projects, getContext());
-        recycleAdapter.notifyDataSetChanged();
+        recyclerAdapter.setListProjects(projects, getContext());
+        recyclerAdapter.notifyDataSetChanged();
     }
 
     @Override

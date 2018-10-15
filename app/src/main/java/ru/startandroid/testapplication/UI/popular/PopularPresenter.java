@@ -29,7 +29,7 @@ public class PopularPresenter
         ServiceGenerator
                 .getInstance()
                 .getApiService()
-                .getNews(false, true)
+                .getPhotos(false, true)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DisposableSingleObserver<Response>() {
                     @Override

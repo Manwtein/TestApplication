@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.MvpAppCompatFragment;
@@ -25,8 +24,8 @@ import java.util.List;
 
 import ru.startandroid.testapplication.R;
 import ru.startandroid.testapplication.UI.detail.DetailFragment;
-import ru.startandroid.testapplication.adapter.RecycleAdapter.OnPopularClickListener;
-import ru.startandroid.testapplication.adapter.RecycleAdapter;
+import ru.startandroid.testapplication.adapter.RecyclerAdapter.OnPopularClickListener;
+import ru.startandroid.testapplication.adapter.RecyclerAdapter;
 import ru.startandroid.testapplication.model.Project;
 
 
@@ -36,7 +35,7 @@ import ru.startandroid.testapplication.model.Project;
 public class PopularFragment
         extends MvpAppCompatFragment
         implements PopularView {
-    private RecycleAdapter recycleAdapter;
+    private RecyclerAdapter recyclerAdapter;
     private RecyclerView recyclerView;
     private LinearLayout pop_no_connect;
     private ProgressBar progressBar;
@@ -77,13 +76,13 @@ public class PopularFragment
         else
             gridLayoutManager = new GridLayoutManager(getActivity(),2);
         recyclerView.setLayoutManager(gridLayoutManager);
-        recycleAdapter = new RecycleAdapter(new OnPopularClickListener() {
+        recyclerAdapter = new RecyclerAdapter(new OnPopularClickListener() {
             @Override
             public void onPopularClick(Bundle bundle) {
                 popularPresenter.onPopularClick(bundle);
             }
         });
-        recyclerView.setAdapter(recycleAdapter);
+        recyclerView.setAdapter(recyclerAdapter);
     }
 
     private void initToolbar() {
@@ -106,8 +105,8 @@ public class PopularFragment
     public void setListProjects(List<Project> projects) {
         hideProgressBar();
         recyclerView.setVisibility(View.VISIBLE);
-        recycleAdapter.setListProjects(projects, getContext());
-        recycleAdapter.notifyDataSetChanged();
+        recyclerAdapter.setListProjects(projects, getContext());
+        recyclerAdapter.notifyDataSetChanged();
     }
 
     @Override

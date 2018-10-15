@@ -10,7 +10,6 @@ import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableSingleObserver;
-import ru.startandroid.testapplication.UI.popular.PopularView;
 import ru.startandroid.testapplication.model.Project;
 import ru.startandroid.testapplication.model.Response;
 import ru.startandroid.testapplication.network.ServiceGenerator;
@@ -33,7 +32,7 @@ public class NewPresenter
         ServiceGenerator
                 .getInstance()
                 .getApiService()
-                .getNews(true, false)
+                .getPhotos(true, false)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DisposableSingleObserver<Response>() {
                     @Override
