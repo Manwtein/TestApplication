@@ -5,11 +5,9 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,8 +43,9 @@ public class NewFragment
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater
-                .inflate(R.layout.fragment_new, container, false);
+        View view = inflater.inflate(R.layout.fragment_new,
+                container,
+                false);
         init(view);
         return view;
     }
@@ -94,19 +93,13 @@ public class NewFragment
 
     private void initToolbar() {
         Toolbar toolbar = getActivity().findViewById(R.id.toolbar);
-        toolbar.setTitle("New");
+        String title = "New";
+        toolbar.setTitle(title);
         ((MvpAppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         ((MvpAppCompatActivity)getActivity()).getSupportActionBar()
                 .setDisplayHomeAsUpEnabled(false);
         ((MvpAppCompatActivity)getActivity()).getSupportActionBar()
                 .setDisplayShowHomeEnabled(false);
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        Log.i("myLogs", "onCreate: new");
-        setRetainInstance(true);
-        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -125,7 +118,8 @@ public class NewFragment
             getFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fl_container, fragment)
-                    .addToBackStack(null).commit();
+                    .addToBackStack(null)
+                    .commit();
         }
     }
 

@@ -68,7 +68,7 @@ public class RecyclerAdapter
             extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ImageView imageView;
 
-        public RecyclerViewHolder(@NonNull View itemView) {
+        private RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imageView);
             itemView.setOnClickListener(this);
@@ -76,12 +76,15 @@ public class RecyclerAdapter
 
         @Override
         public void onClick(View v) {
+            final String NAME = "name";
+            final String DESCRIPTION = "description";
+            final String URL = "contentUrl";
             Bundle bundle = new Bundle();
-            bundle.putString("name",
+            bundle.putString(NAME,
                     photos.get(getAdapterPosition()).getName());
-            bundle.putString("description",
+            bundle.putString(DESCRIPTION,
                     photos.get(getAdapterPosition()).getDescription());
-            bundle.putString("contentUrl",
+            bundle.putString(URL,
                     BASE_URL + photos.get(getAdapterPosition()).getImage().getContentUrl());
             listener.onPopularClick(bundle);
         }

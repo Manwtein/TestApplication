@@ -11,7 +11,8 @@ import java.util.List;
 
 import ru.startandroid.testapplication.model.Photo;
 
-public interface NewView extends MvpView {
+public interface NewView
+        extends MvpView {
 
     @StateStrategyType(SingleStateStrategy.class)
     void setListProjects(List<Photo> photos);

@@ -1,7 +1,6 @@
 package ru.startandroid.testapplication.UI.news;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
@@ -34,14 +33,12 @@ public class NewPresenter
                 .subscribe(new DisposableSingleObserver<Response>() {
                     @Override
                     public void onSuccess(Response response) {
-                        Log.i("myLogs", "response");
                         photos = response.getPhotos();
                         getViewState().setListProjects(photos);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.i("myLogs", "onError: " + e.getMessage());
                         getViewState().showError();
                     }
                 });
@@ -50,5 +47,4 @@ public class NewPresenter
     public void onPopularClick(Bundle bundle){
         getViewState().showFragment(bundle);
     }
-
 }

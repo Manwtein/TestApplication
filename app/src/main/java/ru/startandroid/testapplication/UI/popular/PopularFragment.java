@@ -3,13 +3,12 @@ package ru.startandroid.testapplication.UI.popular;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,20 +30,23 @@ import ru.startandroid.testapplication.model.Photo;
 public class PopularFragment
         extends MvpAppCompatFragment
         implements PopularView {
+
+    @InjectPresenter
+    PopularPresenter popularPresenter;
+
     private RecyclerAdapter recyclerAdapter;
     private RecyclerView recyclerView;
     private LinearLayout containerError;
     private ProgressBar progressBar;
     private SwipeRefreshLayout swipeRefreshLayout;
 
-    @InjectPresenter
-    PopularPresenter popularPresenter;
-
     @Override
-    public View onCreateView(LayoutInflater inflater,
+    public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_popular, null);
+        View view = inflater.inflate(R.layout.fragment_popular,
+                container,
+                false);
         init(view);
         return view;
     }
@@ -92,18 +94,13 @@ public class PopularFragment
 
     private void initToolbar() {
         Toolbar toolbar = getActivity().findViewById(R.id.toolbar);
-        toolbar.setTitle("Popular");
+        String title = "Popular";
+        toolbar.setTitle(title);
         ((MvpAppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         ((MvpAppCompatActivity)getActivity()).getSupportActionBar()
                 .setDisplayHomeAsUpEnabled(false);
         ((MvpAppCompatActivity)getActivity()).getSupportActionBar()
                 .setDisplayShowHomeEnabled(false);
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        Log.i("myLogs", "onCreate: pop");
-        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -122,7 +119,8 @@ public class PopularFragment
             getFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fl_container, fragment)
-                    .addToBackStack(null).commit();
+                    .addToBackStack(null)
+                    .commit();
         }
     }
 

@@ -20,20 +20,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
         </android.support.v7.widget.RecyclerView>
+
         <include
             android:id="@+id/new_no_connect"
             layout="@layout/container_no_connect"
             android:visibility="gone" />
+
         <include
             android:id="@+id/pb_new"
             layout="@layout/custom_progress_bar"
             android:layout_width="96dp"
             android:layout_height="96dp"
-            android:indeterminate="true"
-            android:indeterminateDrawable="@drawable/anim_vector_drawable"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
-
 </android.support.v4.widget.SwipeRefreshLayout>

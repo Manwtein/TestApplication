@@ -1,17 +1,21 @@
 package ru.startandroid.testapplication.model;
 
+
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 
 public class Response {
 
-    private List<Photo> data = null;
+    @SerializedName("data")
+    private List<Photo> photos = null;
 
     public List<Photo> getPhotos(){
-        return data;
+        return photos;
     }
 
-    public void setPhotos(List<Photo> data){
-        this.data = data;
+    public void setPhotos(List<Photo> photos){
+        this.photos = photos;
     }
 }
