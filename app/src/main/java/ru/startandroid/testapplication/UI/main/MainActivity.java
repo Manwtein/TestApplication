@@ -24,7 +24,6 @@ public class MainActivity
     private static final int POS_NEW_FRAGMENT = 1;
     private static final int POS_POP_FRAGMENT = 2;
 
-
     @InjectPresenter
             MainPresenter mainPresenter;
 

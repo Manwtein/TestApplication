@@ -28,10 +28,6 @@ import ru.startandroid.testapplication.adapter.RecyclerAdapter.OnPopularClickLis
 import ru.startandroid.testapplication.adapter.RecyclerAdapter;
 import ru.startandroid.testapplication.model.Project;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class PopularFragment
         extends MvpAppCompatFragment
         implements PopularView {

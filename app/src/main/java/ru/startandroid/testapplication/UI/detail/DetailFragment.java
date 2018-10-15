@@ -2,7 +2,7 @@ package ru.startandroid.testapplication.UI.detail;
 
 
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.app.ActionBar;
 import android.support.v7.widget.ActionBarContainer;
 import android.support.v7.widget.Toolbar;
@@ -25,10 +25,7 @@ import ru.startandroid.testapplication.R;
  * A simple {@link Fragment} subclass.
  */
 public class DetailFragment
-        extends MvpAppCompatFragment
-        implements DetailView{
-    @InjectPresenter
-            DetailPresenter detailPresenter;
+        extends Fragment {
 
     String name;
     String description;
@@ -48,16 +45,11 @@ public class DetailFragment
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_detail, container, false);
         initToolbar();
-//        toolbar.setNavigationIcon(R.drawable.ic_launcher_foreground);
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                getActivity().getSupportFragmentManager().popBackStack();
-//            }
-//        });
         ((TextView)view.findViewById(R.id.name)).setText(name);
         ((TextView)view.findViewById(R.id.description)).setText(description);
-        Picasso.with(getContext()).load(contentUrl).into((ImageView) view.findViewById(R.id.imageUrl));
+        Picasso.with(getContext())
+                .load(contentUrl)
+                .into((ImageView) view.findViewById(R.id.imageUrl));
         return view;
     }
 

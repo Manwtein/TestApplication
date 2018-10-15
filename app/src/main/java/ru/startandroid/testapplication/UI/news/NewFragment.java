@@ -3,6 +3,7 @@ package ru.startandroid.testapplication.UI.news;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -27,10 +28,6 @@ import ru.startandroid.testapplication.UI.detail.DetailFragment;
 import ru.startandroid.testapplication.adapter.RecyclerAdapter;
 import ru.startandroid.testapplication.model.Project;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class NewFragment
         extends MvpAppCompatFragment
         implements NewView {
@@ -43,10 +40,10 @@ public class NewFragment
     private LinearLayout new_no_connect;
     private ProgressBar progressBar;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private GridLayoutManager gridLayoutManager;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater
                 .inflate(R.layout.fragment_new, container, false);
@@ -56,6 +53,32 @@ public class NewFragment
 
     private void init(View view) {
         initToolbar();
+        initSwipe(view);
+        progressBar = view.findViewById(R.id.pb_new);
+        new_no_connect = view.findViewById(R.id.new_no_connect);
+        initRecycler(view);
+    }
+
+    private void initRecycler(View view) {
+        recyclerView = view.findViewById(R.id.recycleView_new);
+        GridLayoutManager gridLayoutManager;
+        if (getResources().getConfiguration().orientation
+                == Configuration.ORIENTATION_LANDSCAPE) {
+            gridLayoutManager = new GridLayoutManager(getActivity(),3);
+        } else {
+            gridLayoutManager = new GridLayoutManager(getActivity(),2);
+        }
+        recyclerView.setLayoutManager(gridLayoutManager);
+        recyclerAdapter = new RecyclerAdapter(new RecyclerAdapter.OnPopularClickListener() {
+            @Override
+            public void onPopularClick(Bundle bundle) {
+                newPresenter.onPopularClick(bundle);
+            }
+        });
+        recyclerView.setAdapter(recyclerAdapter);
+    }
+
+    private void initSwipe(View view) {
         swipeRefreshLayout = view.findViewById(R.id.srl_new);
         swipeRefreshLayout.setColorSchemeResources(R.color.colorTitle);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -67,22 +90,6 @@ public class NewFragment
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
-        progressBar = view.findViewById(R.id.pb_new);
-        new_no_connect = view.findViewById(R.id.new_no_connect);
-        recyclerView = view.findViewById(R.id.recycleView_new);
-        if (getResources().getConfiguration().orientation
-                == Configuration.ORIENTATION_LANDSCAPE)
-            gridLayoutManager = new GridLayoutManager(getActivity(),3);
-        else
-            gridLayoutManager = new GridLayoutManager(getActivity(),2);
-        recyclerView.setLayoutManager(gridLayoutManager);
-        recyclerAdapter = new RecyclerAdapter(new RecyclerAdapter.OnPopularClickListener() {
-            @Override
-            public void onPopularClick(Bundle bundle) {
-                newPresenter.onPopularClick(bundle);
-            }
-        });
-        recyclerView.setAdapter(recyclerAdapter);
     }
 
     private void initToolbar() {
