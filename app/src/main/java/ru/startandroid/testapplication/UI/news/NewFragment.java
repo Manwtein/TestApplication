@@ -37,7 +37,7 @@ public class NewFragment
 
     private RecyclerView recyclerView;
     private RecyclerAdapter recyclerAdapter;
-    private LinearLayout new_no_connect;
+    private LinearLayout containerError;
     private ProgressBar progressBar;
     private SwipeRefreshLayout swipeRefreshLayout;
 
@@ -55,7 +55,7 @@ public class NewFragment
         initToolbar();
         initSwipe(view);
         progressBar = view.findViewById(R.id.pb_new);
-        new_no_connect = view.findViewById(R.id.new_no_connect);
+        containerError = view.findViewById(R.id.new_no_connect);
         initRecycler(view);
     }
 
@@ -85,7 +85,7 @@ public class NewFragment
             @Override
             public void onRefresh() {
                 progressBar.setVisibility(View.VISIBLE);
-                new_no_connect.setVisibility(View.GONE);
+                containerError.setVisibility(View.GONE);
                 newPresenter.request();
                 swipeRefreshLayout.setRefreshing(false);
             }
@@ -133,7 +133,7 @@ public class NewFragment
     public void showError() {
         recyclerView.setVisibility(View.GONE);
         hideProgressBar();
-        new_no_connect.setVisibility(View.VISIBLE);
+        containerError.setVisibility(View.VISIBLE);
     }
 
     private void hideProgressBar() {

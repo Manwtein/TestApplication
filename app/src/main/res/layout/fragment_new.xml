@@ -1,31 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/srl_new"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UI.news.NewFragment">
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/srl_new"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycleView_new"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
             app:layout_constraintTop_toBottomOf="@id/pb_new"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
         </android.support.v7.widget.RecyclerView>
-
         <include
             android:id="@+id/new_no_connect"
             layout="@layout/container_no_connect"
             android:visibility="gone" />
-
         <include
             android:id="@+id/pb_new"
             layout="@layout/custom_progress_bar"
@@ -37,6 +35,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
-    </android.support.v4.widget.SwipeRefreshLayout>
 
-</FrameLayout>
+</android.support.v4.widget.SwipeRefreshLayout>

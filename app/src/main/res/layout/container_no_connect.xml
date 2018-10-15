@@ -14,11 +14,11 @@
             android:layout_height="wrap_content"
             android:text="@string/oh_shucks"
             android:textColor="@color/colorTitle"
-            android:textSize="20sp"
+            android:textSize="@dimen/normal_size"
             android:textStyle="bold"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/check_settings"
-            android:textSize="12sp" />
+            android:textSize="@dimen/small_size" />
 </LinearLayout>

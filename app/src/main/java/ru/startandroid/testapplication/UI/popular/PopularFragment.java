@@ -33,7 +33,7 @@ public class PopularFragment
         implements PopularView {
     private RecyclerAdapter recyclerAdapter;
     private RecyclerView recyclerView;
-    private LinearLayout pop_no_connect;
+    private LinearLayout containerError;
     private ProgressBar progressBar;
     private SwipeRefreshLayout swipeRefreshLayout;
 
@@ -53,7 +53,7 @@ public class PopularFragment
         initToolbar();
         initSwipe(view);
         progressBar = view.findViewById(R.id.pb_pop);
-        pop_no_connect = view.findViewById(R.id.pop_no_connect);
+        containerError = view.findViewById(R.id.pop_no_connect);
         initRecycler(view);
     }
 
@@ -83,7 +83,7 @@ public class PopularFragment
             @Override
             public void onRefresh() {
                 progressBar.setVisibility(View.VISIBLE);
-                pop_no_connect.setVisibility(View.GONE);
+                containerError.setVisibility(View.GONE);
                 popularPresenter.request();
                 swipeRefreshLayout.setRefreshing(false);
             }
@@ -130,7 +130,7 @@ public class PopularFragment
     public void showError() {
         recyclerView.setVisibility(View.GONE);
         hideProgressBar();
-        pop_no_connect.setVisibility(View.VISIBLE);
+        containerError.setVisibility(View.VISIBLE);
     }
 
     private void hideProgressBar() {
