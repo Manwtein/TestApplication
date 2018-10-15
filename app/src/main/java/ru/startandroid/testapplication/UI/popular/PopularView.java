@@ -15,12 +15,12 @@ import ru.startandroid.testapplication.model.Project;
 public interface PopularView
         extends MvpView {
 
-    @StateStrategyType(AddToEndSingleStrategy.class)
+    @StateStrategyType(SingleStateStrategy.class)
     void setListProjects(List<Project> projects);
 
     @StateStrategyType(SkipStrategy.class)
     void showFragment(Bundle bundle);
 
-    @StateStrategyType(SkipStrategy.class)
+    @StateStrategyType(SingleStateStrategy.class)
     void showError();
 }

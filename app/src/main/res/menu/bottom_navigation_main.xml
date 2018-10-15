@@ -5,13 +5,13 @@
     <item
         android:title="@string/item_new"
         android:id="@+id/item_new"
-        android:icon="@drawable/icon_new"
+        android:icon="@drawable/ic_new"
         android:enabled="true">
     </item>
     <item
         android:title="@string/item_popular"
         android:id="@+id/item_popular"
-        android:icon="@drawable/ic_whatshot_black_24dp"
+        android:icon="@drawable/ic_popular_24dp"
         android:enabled="true">
     </item>
 

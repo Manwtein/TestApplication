@@ -131,8 +131,8 @@ public class NewFragment
 
     @Override
     public void showError() {
-        recyclerView.setVisibility(View.GONE);
         hideProgressBar();
+        recyclerView.setVisibility(View.GONE);
         containerError.setVisibility(View.VISIBLE);
     }
 
