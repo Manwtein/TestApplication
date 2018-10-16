@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -39,7 +40,9 @@ public class MainActivity
         navigationView.setOnNavigationItemReselectedListener(
                 new BottomNavigationView.OnNavigationItemReselectedListener() {
             @Override
-            public void onNavigationItemReselected(@NonNull MenuItem menuItem) {}
+            public void onNavigationItemReselected(@NonNull MenuItem menuItem) {
+                mainPresenter.onReselected();
+            }
             });
         navigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -80,6 +83,18 @@ public class MainActivity
     }
 
     @Override
+    public void backFragment() {
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag("new");
+        Fragment fragment2 = getSupportFragmentManager().findFragmentByTag("popular");
+        if ((fragment != null
+                && fragment.isVisible())
+                || (fragment2 != null
+                && fragment2.isVisible())) {
+            getSupportFragmentManager().popBackStack();
+        }
+    }
+
+    @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
@@ -87,13 +102,15 @@ public class MainActivity
 
     @Override
     public void onBackPressed() {
-        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
-            int lastBackStack = getSupportFragmentManager().getBackStackEntryCount() - 1;
-            getSupportFragmentManager().popBackStack(getSupportFragmentManager()
-                            .getBackStackEntryAt(lastBackStack).getId(),
-                    FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag("new");
+        Fragment fragment2 = getSupportFragmentManager().findFragmentByTag("popular");
+        if ((fragment != null
+                && fragment.isVisible())
+                || (fragment2 != null
+                && fragment2.isVisible())) {
+            getSupportFragmentManager().popBackStack();
         } else {
-            super.onBackPressed();
+            finish();
         }
     }
 }

@@ -115,9 +115,9 @@ public class NewFragment
         Fragment fragment = new DetailFragment();
         fragment.setArguments(bundle);
         if (getFragmentManager() != null) {
-            getFragmentManager()
+            getActivity().getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fl_container, fragment)
+                    .replace(R.id.fl_container, fragment, "new")
                     .addToBackStack(null)
                     .commit();
         }
