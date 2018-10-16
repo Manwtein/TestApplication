@@ -18,7 +18,4 @@ public class MainPresenter
         getViewState().showFragment(posTab);
     }
 
-    public void onReselected(){
-        getViewState().backFragment();
-    }
 }

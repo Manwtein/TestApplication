@@ -39,9 +39,7 @@ public class MainActivity
         navigationView.setOnNavigationItemReselectedListener(
                 new BottomNavigationView.OnNavigationItemReselectedListener() {
             @Override
-            public void onNavigationItemReselected(@NonNull MenuItem menuItem) {
-                mainPresenter.onReselected();
-                }
+            public void onNavigationItemReselected(@NonNull MenuItem menuItem) {}
             });
         navigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -78,16 +76,6 @@ public class MainActivity
                     .beginTransaction()
                     .replace(R.id.fl_container, fragment)
                     .commit();
-        }
-    }
-
-    @Override
-    public void backFragment() {
-        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
-            int lastBackStack = getSupportFragmentManager().getBackStackEntryCount() - 1;
-            getSupportFragmentManager().popBackStack(getSupportFragmentManager()
-                            .getBackStackEntryAt(lastBackStack).getId(),
-                    FragmentManager.POP_BACK_STACK_INCLUSIVE);
         }
     }
 

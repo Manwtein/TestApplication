@@ -10,6 +10,4 @@ public interface MainView
     @StateStrategyType(SkipStrategy.class)
     void showFragment(int pos);
 
-    @StateStrategyType(SkipStrategy.class)
-    void backFragment();
 }
