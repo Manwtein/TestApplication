@@ -39,6 +39,7 @@ public class PopularFragment
     private LinearLayout containerError;
     private ProgressBar progressBar;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private final String TAG = "Popular";
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -94,8 +95,7 @@ public class PopularFragment
 
     private void initToolbar() {
         Toolbar toolbar = getActivity().findViewById(R.id.toolbar);
-        String title = "Popular";
-        toolbar.setTitle(title);
+        toolbar.setTitle(TAG);
         ((MvpAppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         ((MvpAppCompatActivity)getActivity()).getSupportActionBar()
                 .setDisplayHomeAsUpEnabled(false);
@@ -116,9 +116,9 @@ public class PopularFragment
         Fragment fragment = new DetailFragment();
         fragment.setArguments(bundle);
         if (getFragmentManager() != null) {
-            getActivity().getSupportFragmentManager()
+            getFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fl_container, fragment, "popular")
+                    .replace(R.id.fl_container, fragment, TAG)
                     .addToBackStack(null)
                     .commit();
         }
@@ -126,8 +126,8 @@ public class PopularFragment
 
     @Override
     public void showError() {
-        recyclerView.setVisibility(View.GONE);
         hideProgressBar();
+        recyclerView.setVisibility(View.GONE);
         containerError.setVisibility(View.VISIBLE);
     }
 

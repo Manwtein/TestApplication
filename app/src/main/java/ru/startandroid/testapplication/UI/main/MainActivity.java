@@ -4,10 +4,8 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -22,6 +20,8 @@ public class MainActivity
 
     private static final int POS_NEW_FRAGMENT = 1;
     private static final int POS_POP_FRAGMENT = 2;
+    private static String TAG_NEW = "New";
+    private static String TAG_POP = "Popular";
 
     @InjectPresenter
             MainPresenter mainPresenter;
@@ -84,8 +84,8 @@ public class MainActivity
 
     @Override
     public void backFragment() {
-        Fragment fragment = getSupportFragmentManager().findFragmentByTag("new");
-        Fragment fragment2 = getSupportFragmentManager().findFragmentByTag("popular");
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag(TAG_NEW);
+        Fragment fragment2 = getSupportFragmentManager().findFragmentByTag(TAG_POP);
         if ((fragment != null
                 && fragment.isVisible())
                 || (fragment2 != null
@@ -102,8 +102,8 @@ public class MainActivity
 
     @Override
     public void onBackPressed() {
-        Fragment fragment = getSupportFragmentManager().findFragmentByTag("new");
-        Fragment fragment2 = getSupportFragmentManager().findFragmentByTag("popular");
+        Fragment fragment = getSupportFragmentManager().findFragmentByTag(TAG_NEW);
+        Fragment fragment2 = getSupportFragmentManager().findFragmentByTag(TAG_POP);
         if ((fragment != null
                 && fragment.isVisible())
                 || (fragment2 != null

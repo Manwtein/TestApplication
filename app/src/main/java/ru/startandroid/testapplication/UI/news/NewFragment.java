@@ -38,6 +38,7 @@ public class NewFragment
     private LinearLayout containerError;
     private ProgressBar progressBar;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private final String TAG = "New";
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -93,8 +94,7 @@ public class NewFragment
 
     private void initToolbar() {
         Toolbar toolbar = getActivity().findViewById(R.id.toolbar);
-        String title = "New";
-        toolbar.setTitle(title);
+        toolbar.setTitle(TAG);
         ((MvpAppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         ((MvpAppCompatActivity)getActivity()).getSupportActionBar()
                 .setDisplayHomeAsUpEnabled(false);
@@ -115,9 +115,9 @@ public class NewFragment
         Fragment fragment = new DetailFragment();
         fragment.setArguments(bundle);
         if (getFragmentManager() != null) {
-            getActivity().getSupportFragmentManager()
+            getFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fl_container, fragment, "new")
+                    .replace(R.id.fl_container, fragment, TAG)
                     .addToBackStack(null)
                     .commit();
         }
