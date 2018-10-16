@@ -39,8 +39,10 @@ public class MainActivity
         navigationView.setOnNavigationItemReselectedListener(
                 new BottomNavigationView.OnNavigationItemReselectedListener() {
             @Override
-            public void onNavigationItemReselected(@NonNull MenuItem menuItem) {}
-        });
+            public void onNavigationItemReselected(@NonNull MenuItem menuItem) {
+                mainPresenter.onReselected();
+                }
+            });
         navigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     int posTab = 0;
@@ -80,6 +82,16 @@ public class MainActivity
     }
 
     @Override
+    public void backFragment() {
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            int lastBackStack = getSupportFragmentManager().getBackStackEntryCount() - 1;
+            getSupportFragmentManager().popBackStack(getSupportFragmentManager()
+                            .getBackStackEntryAt(lastBackStack).getId(),
+                    FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        }
+    }
+
+    @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
@@ -88,8 +100,9 @@ public class MainActivity
     @Override
     public void onBackPressed() {
         if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            int lastBackStack = getSupportFragmentManager().getBackStackEntryCount() - 1;
             getSupportFragmentManager().popBackStack(getSupportFragmentManager()
-                            .getBackStackEntryAt(0).getId(),
+                            .getBackStackEntryAt(lastBackStack).getId(),
                     FragmentManager.POP_BACK_STACK_INCLUSIVE);
         } else {
             super.onBackPressed();
