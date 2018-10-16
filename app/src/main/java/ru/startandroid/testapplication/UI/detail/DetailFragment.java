@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 
 import ru.startandroid.testapplication.R;
 
@@ -44,7 +44,7 @@ public class DetailFragment
         initToolbar();
         ((TextView)view.findViewById(R.id.name)).setText(name);
         ((TextView)view.findViewById(R.id.description)).setText(description);
-        Picasso.with(getContext())
+        Glide.with(getContext())
                 .load(contentUrl)
                 .into((ImageView) view.findViewById(R.id.imageUrl));
         return view;

@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +52,7 @@ public class RecyclerAdapter
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHolder viewHolder,
                                  int i) {
-        Picasso.with(context)
+        Glide.with(context)
                 .load(BASE_URL + photos.get(i).getImage().getContentUrl())
                 .into(viewHolder.imageView);
     }
